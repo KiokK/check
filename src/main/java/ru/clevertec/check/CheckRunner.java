@@ -8,6 +8,7 @@ import main.java.ru.clevertec.check.exception.NotEnoughMoneyException;
 import main.java.ru.clevertec.check.exception.InternalServerException;
 import main.java.ru.clevertec.check.factory.CheckFactory;
 import main.java.ru.clevertec.check.util.ArgsParser;
+import main.java.ru.clevertec.check.util.Constants;
 import main.java.ru.clevertec.check.util.printer.factory.ConsoleCheckPrinter;
 import main.java.ru.clevertec.check.util.printer.factory.CsvCheckPrinter;
 import main.java.ru.clevertec.check.util.printer.factory.CsvErrorPrinter;
@@ -23,15 +24,23 @@ public class CheckRunner {
         try {
             PurchaseDto request = ArgsParser.consoleArgsParse(args);
             CheckDto response = checkFactory.createCheck(request);
-            csvCheckPrinter.print(response);
+            csvCheckPrinter.print(response, Constants.SAVE_TO_FILE);
             consoleCheckPrinter.print(response);
 
         } catch (NotEnoughMoneyException | BadRequestException | InternalServerException e) {
-            csvErrorPrinter.print(e.getMessage());
+            if (Constants.SAVE_TO_FILE != null) {
+                csvErrorPrinter.print(e.getMessage(), Constants.SAVE_TO_FILE);
+            } else {
+                csvErrorPrinter.print(e.getMessage());
+            }
             System.out.printf("ERROR: %s", e.getMessage());
 
         } catch (EntityNotFoundException e) {
-            csvErrorPrinter.print(BadRequestException.MESSAGE_DEFAULT);
+            if (Constants.SAVE_TO_FILE != null) {
+                csvErrorPrinter.print(BadRequestException.MESSAGE_DEFAULT, Constants.SAVE_TO_FILE);
+            } else {
+                csvErrorPrinter.print(BadRequestException.MESSAGE_DEFAULT);
+            }
             System.out.printf("ERROR: %s", BadRequestException.MESSAGE_DEFAULT);
         }
     }

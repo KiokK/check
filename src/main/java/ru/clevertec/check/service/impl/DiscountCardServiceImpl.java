@@ -5,10 +5,11 @@ import main.java.ru.clevertec.check.exception.EntityNotFoundException;
 import main.java.ru.clevertec.check.filerepository.DiscountCardRepository;
 import main.java.ru.clevertec.check.mapper.DiscountCardMapper;
 import main.java.ru.clevertec.check.service.DiscountCardService;
+import main.java.ru.clevertec.check.util.Constants;
 
 public class DiscountCardServiceImpl implements DiscountCardService {
 
-    private final DiscountCardRepository discountCardRepository = new DiscountCardRepository();
+    private final DiscountCardRepository discountCardRepository = new DiscountCardRepository(Constants.DISCOUNT_CARDS_PATH);
     private final DiscountCardMapper discountCardMapper = new DiscountCardMapper();
 
     @Override

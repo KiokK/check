@@ -6,14 +6,13 @@ import main.java.ru.clevertec.check.util.reader.CsvReader;
 import java.util.List;
 import java.util.Optional;
 
-import static main.java.ru.clevertec.check.util.Constants.PRODUCT_PATH;
 import static main.java.ru.clevertec.check.util.Constants.ROOT_PATH;
 
 public class ProductRepository {
 
      private static List<Product> products;
 
-     static {
+    public ProductRepository(String PRODUCT_PATH) {
         CsvReader<Product> productCsvReader = new CsvReader<>();
         products = productCsvReader.read(ROOT_PATH + PRODUCT_PATH, Product.class);
     }

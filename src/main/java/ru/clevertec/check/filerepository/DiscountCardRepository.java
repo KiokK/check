@@ -6,14 +6,13 @@ import main.java.ru.clevertec.check.util.reader.CsvReader;
 import java.util.List;
 import java.util.Optional;
 
-import static main.java.ru.clevertec.check.util.Constants.DISCOUNT_CARDS_PATH;
 import static main.java.ru.clevertec.check.util.Constants.ROOT_PATH;
 
 public class DiscountCardRepository {
 
     private static List<DiscountCard> discountCards;
 
-    static {
+    public DiscountCardRepository(String DISCOUNT_CARDS_PATH) {
         CsvReader<DiscountCard> discountCardCsvReader = new CsvReader<>();
         discountCards = discountCardCsvReader.read(ROOT_PATH + DISCOUNT_CARDS_PATH, DiscountCard.class);
     }

@@ -13,6 +13,8 @@ public class ArgsParser {
 
     private static final String DISCOUNT_CARD = "discountCard";
     private static final String BALANCE_DEBIT_CARD = "balanceDebitCard";
+    private static final String SAVE_TO_FILE = "saveToFile";
+    private static final String PATH_TO_FILE = "pathToFile";
 
     public static PurchaseDto consoleArgsParse(String[] args) throws BadRequestException {
         PurchaseDto request = new PurchaseDto();
@@ -25,13 +27,15 @@ public class ArgsParser {
                 switch (part[0]) {
                     case DISCOUNT_CARD -> request.discountCard = Long.valueOf(part[1]);
                     case BALANCE_DEBIT_CARD -> request.balanceDebitCard = new BigDecimal(part[1]);
+                    case SAVE_TO_FILE -> Constants.SAVE_TO_FILE = part[1];
+                    case PATH_TO_FILE -> Constants.PRODUCT_PATH = part[1];
                 }
             } else {
                 addProduct(request, part);
             }
         }
 
-        if (request.balanceDebitCard == null) {
+        if (request.balanceDebitCard == null || Constants.SAVE_TO_FILE == null || Constants.PRODUCT_PATH == null) {
             throw new BadRequestException();
         }
 
