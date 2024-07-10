@@ -1,17 +1,17 @@
-package main.java.ru.clevertec.check.util.printer.factory;
+package ru.clevertec.check.util.printer.factory;
 
-import main.java.ru.clevertec.check.dto.response.CheckDto;
-import main.java.ru.clevertec.check.dto.response.PurchasedItem;
-import main.java.ru.clevertec.check.exception.InternalServerException;
-import main.java.ru.clevertec.check.util.printer.Printer;
+import ru.clevertec.check.dto.response.CheckDto;
+import ru.clevertec.check.dto.response.PurchasedItem;
+import ru.clevertec.check.exception.InternalServerException;
+import ru.clevertec.check.util.printer.Printer;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-import static main.java.ru.clevertec.check.util.FormatUtil.currencyFormat;
-import static main.java.ru.clevertec.check.util.FormatUtil.dateFormat;
-import static main.java.ru.clevertec.check.util.FormatUtil.timeFormat;
+import static ru.clevertec.check.util.FormatUtil.currencyFormat;
+import static ru.clevertec.check.util.FormatUtil.dateFormat;
+import static ru.clevertec.check.util.FormatUtil.timeFormat;
 
 public class CsvCheckPrinter implements Printer<CheckDto> {
 

@@ -1,6 +1,6 @@
-package main.java.ru.clevertec.check.util.reader;
+package ru.clevertec.check.util.reader;
 
-import main.java.ru.clevertec.check.exception.InternalServerException;
+import ru.clevertec.check.exception.InternalServerException;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

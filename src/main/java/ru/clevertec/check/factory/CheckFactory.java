@@ -1,16 +1,16 @@
-package main.java.ru.clevertec.check.factory;
+package ru.clevertec.check.factory;
 
-import main.java.ru.clevertec.check.dto.request.PurchaseDto;
-import main.java.ru.clevertec.check.dto.response.CheckDto;
-import main.java.ru.clevertec.check.dto.response.DiscountCardDto;
-import main.java.ru.clevertec.check.dto.response.ProductDto;
-import main.java.ru.clevertec.check.dto.response.PurchasedItem;
-import main.java.ru.clevertec.check.exception.BadRequestException;
-import main.java.ru.clevertec.check.exception.NotEnoughMoneyException;
-import main.java.ru.clevertec.check.service.DiscountCardService;
-import main.java.ru.clevertec.check.service.ProductService;
-import main.java.ru.clevertec.check.service.impl.DiscountCardServiceImpl;
-import main.java.ru.clevertec.check.service.impl.ProductServiceImpl;
+import ru.clevertec.check.dto.request.PurchaseDto;
+import ru.clevertec.check.dto.response.CheckDto;
+import ru.clevertec.check.dto.response.DiscountCardDto;
+import ru.clevertec.check.dto.response.ProductDto;
+import ru.clevertec.check.dto.response.PurchasedItem;
+import ru.clevertec.check.exception.BadRequestException;
+import ru.clevertec.check.exception.NotEnoughMoneyException;
+import ru.clevertec.check.service.DiscountCardService;
+import ru.clevertec.check.service.ProductService;
+import ru.clevertec.check.service.impl.DiscountCardServiceImpl;
+import ru.clevertec.check.service.impl.ProductServiceImpl;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

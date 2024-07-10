@@ -1,11 +1,11 @@
-package main.java.ru.clevertec.check.service.impl;
+package ru.clevertec.check.service.impl;
 
-import main.java.ru.clevertec.check.dto.response.DiscountCardDto;
-import main.java.ru.clevertec.check.exception.EntityNotFoundException;
-import main.java.ru.clevertec.check.filerepository.DiscountCardRepository;
-import main.java.ru.clevertec.check.mapper.DiscountCardMapper;
-import main.java.ru.clevertec.check.service.DiscountCardService;
-import main.java.ru.clevertec.check.util.Constants;
+import ru.clevertec.check.dto.response.DiscountCardDto;
+import ru.clevertec.check.exception.EntityNotFoundException;
+import ru.clevertec.check.filerepository.DiscountCardRepository;
+import ru.clevertec.check.mapper.DiscountCardMapper;
+import ru.clevertec.check.service.DiscountCardService;
+import ru.clevertec.check.util.Constants;
 
 public class DiscountCardServiceImpl implements DiscountCardService {
 

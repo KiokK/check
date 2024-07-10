@@ -1,4 +1,4 @@
-package main.java.ru.clevertec.check.dto.response;
+package ru.clevertec.check.dto.response;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

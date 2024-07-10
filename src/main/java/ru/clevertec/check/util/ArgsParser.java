@@ -1,7 +1,7 @@
-package main.java.ru.clevertec.check.util;
+package ru.clevertec.check.util;
 
-import main.java.ru.clevertec.check.dto.request.PurchaseDto;
-import main.java.ru.clevertec.check.exception.BadRequestException;
+import ru.clevertec.check.dto.request.PurchaseDto;
+import ru.clevertec.check.exception.BadRequestException;
 
 import java.math.BigDecimal;
 import java.util.HashMap;

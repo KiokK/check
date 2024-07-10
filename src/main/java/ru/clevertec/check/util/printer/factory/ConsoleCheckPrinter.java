@@ -1,11 +1,11 @@
-package main.java.ru.clevertec.check.util.printer.factory;
+package ru.clevertec.check.util.printer.factory;
 
-import main.java.ru.clevertec.check.dto.response.CheckDto;
-import main.java.ru.clevertec.check.util.printer.Printer;
+import ru.clevertec.check.dto.response.CheckDto;
+import ru.clevertec.check.util.printer.Printer;
 
-import static main.java.ru.clevertec.check.util.FormatUtil.currencyFormat;
-import static main.java.ru.clevertec.check.util.FormatUtil.dateFormat;
-import static main.java.ru.clevertec.check.util.FormatUtil.timeFormat;
+import static ru.clevertec.check.util.FormatUtil.currencyFormat;
+import static ru.clevertec.check.util.FormatUtil.dateFormat;
+import static ru.clevertec.check.util.FormatUtil.timeFormat;
 
 public class ConsoleCheckPrinter implements Printer<CheckDto> {
 

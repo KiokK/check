@@ -1,6 +1,6 @@
-package main.java.ru.clevertec.check.util.printer;
+package ru.clevertec.check.util.printer;
 
-import static main.java.ru.clevertec.check.util.Constants.ROOT_PATH;
+import static ru.clevertec.check.util.Constants.ROOT_PATH;
 
 public interface Printer<T> {
 

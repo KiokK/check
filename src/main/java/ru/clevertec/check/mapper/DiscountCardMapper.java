@@ -1,7 +1,7 @@
-package main.java.ru.clevertec.check.mapper;
+package ru.clevertec.check.mapper;
 
-import main.java.ru.clevertec.check.dto.response.DiscountCardDto;
-import main.java.ru.clevertec.check.model.DiscountCard;
+import ru.clevertec.check.dto.response.DiscountCardDto;
+import ru.clevertec.check.model.DiscountCard;
 
 public class DiscountCardMapper {
 

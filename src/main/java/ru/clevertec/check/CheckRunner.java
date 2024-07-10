@@ -1,17 +1,17 @@
-package main.java.ru.clevertec.check;
+package ru.clevertec.check;
 
-import main.java.ru.clevertec.check.dto.request.PurchaseDto;
-import main.java.ru.clevertec.check.dto.response.CheckDto;
-import main.java.ru.clevertec.check.exception.BadRequestException;
-import main.java.ru.clevertec.check.exception.EntityNotFoundException;
-import main.java.ru.clevertec.check.exception.NotEnoughMoneyException;
-import main.java.ru.clevertec.check.exception.InternalServerException;
-import main.java.ru.clevertec.check.factory.CheckFactory;
-import main.java.ru.clevertec.check.util.ArgsParser;
-import main.java.ru.clevertec.check.util.Constants;
-import main.java.ru.clevertec.check.util.printer.factory.ConsoleCheckPrinter;
-import main.java.ru.clevertec.check.util.printer.factory.CsvCheckPrinter;
-import main.java.ru.clevertec.check.util.printer.factory.CsvErrorPrinter;
+import ru.clevertec.check.dto.request.PurchaseDto;
+import ru.clevertec.check.dto.response.CheckDto;
+import ru.clevertec.check.exception.BadRequestException;
+import ru.clevertec.check.exception.EntityNotFoundException;
+import ru.clevertec.check.exception.NotEnoughMoneyException;
+import ru.clevertec.check.exception.InternalServerException;
+import ru.clevertec.check.factory.CheckFactory;
+import ru.clevertec.check.util.ArgsParser;
+import ru.clevertec.check.util.Constants;
+import ru.clevertec.check.util.printer.factory.ConsoleCheckPrinter;
+import ru.clevertec.check.util.printer.factory.CsvCheckPrinter;
+import ru.clevertec.check.util.printer.factory.CsvErrorPrinter;
 
 public class CheckRunner {
 

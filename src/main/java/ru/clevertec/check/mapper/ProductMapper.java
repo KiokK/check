@@ -1,7 +1,7 @@
-package main.java.ru.clevertec.check.mapper;
+package ru.clevertec.check.mapper;
 
-import main.java.ru.clevertec.check.dto.response.ProductDto;
-import main.java.ru.clevertec.check.model.Product;
+import ru.clevertec.check.dto.response.ProductDto;
+import ru.clevertec.check.model.Product;
 
 public class ProductMapper {
 

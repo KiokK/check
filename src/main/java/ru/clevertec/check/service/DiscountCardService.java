@@ -1,7 +1,7 @@
-package main.java.ru.clevertec.check.service;
+package ru.clevertec.check.service;
 
-import main.java.ru.clevertec.check.dto.response.DiscountCardDto;
-import main.java.ru.clevertec.check.exception.EntityNotFoundException;
+import ru.clevertec.check.dto.response.DiscountCardDto;
+import ru.clevertec.check.exception.EntityNotFoundException;
 
 public interface DiscountCardService {
 
