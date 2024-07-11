@@ -17,9 +17,14 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 dependencies {
+    implementation 'org.postgresql:postgresql:42.6.0'
+
+    testImplementation 'org.mockito:mockito-core:5.11.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.10.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.11.0-M2'
+    testImplementation 'org.junit.platform:junit-platform-launcher:1.2.0'
 }
 
 test {
     useJUnitPlatform()
 }
-

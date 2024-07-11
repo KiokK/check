@@ -1,6 +1,7 @@
 package ru.clevertec.check.model;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class Product {
 
@@ -48,5 +49,13 @@ public class Product {
 
     public void setWholesaleProduct(Boolean wholesaleProduct) {
         this.wholesaleProduct = wholesaleProduct;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(id, product.id) && Objects.equals(description, product.description) && Objects.equals(price, product.price) && Objects.equals(quantityInStock, product.quantityInStock) && Objects.equals(wholesaleProduct, product.wholesaleProduct);
     }
 }

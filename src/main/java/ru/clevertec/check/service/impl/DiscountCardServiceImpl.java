@@ -2,14 +2,13 @@ package ru.clevertec.check.service.impl;
 
 import ru.clevertec.check.dto.response.DiscountCardDto;
 import ru.clevertec.check.exception.EntityNotFoundException;
-import ru.clevertec.check.filerepository.DiscountCardRepository;
 import ru.clevertec.check.mapper.DiscountCardMapper;
+import ru.clevertec.check.repository.DiscountCardRepository;
 import ru.clevertec.check.service.DiscountCardService;
-import ru.clevertec.check.util.Constants;
 
 public class DiscountCardServiceImpl implements DiscountCardService {
 
-    private final DiscountCardRepository discountCardRepository = new DiscountCardRepository(Constants.DISCOUNT_CARDS_PATH);
+    private final DiscountCardRepository discountCardRepository = new DiscountCardRepository();
     private final DiscountCardMapper discountCardMapper = new DiscountCardMapper();
 
     @Override

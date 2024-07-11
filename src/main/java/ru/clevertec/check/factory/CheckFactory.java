@@ -7,6 +7,7 @@ import ru.clevertec.check.dto.response.ProductDto;
 import ru.clevertec.check.dto.response.PurchasedItem;
 import ru.clevertec.check.exception.BadRequestException;
 import ru.clevertec.check.exception.NotEnoughMoneyException;
+import ru.clevertec.check.repository.ProductRepository;
 import ru.clevertec.check.service.DiscountCardService;
 import ru.clevertec.check.service.ProductService;
 import ru.clevertec.check.service.impl.DiscountCardServiceImpl;
@@ -21,7 +22,7 @@ public class CheckFactory {
 
     private final BigDecimal DISCOUNT_OPT_PERCENTAGE = new BigDecimal("0.1");
 
-    private final ProductService productService = new ProductServiceImpl();
+    private final ProductService productService = new ProductServiceImpl(new ProductRepository());
     private final DiscountCardService discountCardService = new DiscountCardServiceImpl();
 
     public CheckDto createCheck(PurchaseDto purchaseDto) throws NotEnoughMoneyException, BadRequestException {
