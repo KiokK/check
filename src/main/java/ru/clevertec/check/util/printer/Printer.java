@@ -8,6 +8,8 @@ public interface Printer<T> {
 
     void print(T data, String filePath);
 
+    String printString(T data);
+
     default void print(T data) {
         print(data, RESULT_CHECK_PATH);
     }

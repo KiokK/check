@@ -19,28 +19,34 @@ public class CsvCheckPrinter implements Printer<CheckDto> {
     public void print(CheckDto check, String filePath) {
         File csvOutputFile = new File(filePath);
         try (PrintWriter pw = new PrintWriter(csvOutputFile)) {
-            pw.println("Date;Time");
-            pw.println(dateFormat(check.date) + ";" + timeFormat(check.time));
-            pw.println();
-
-            pw.println("QTY;DESCRIPTION;PRICE;DISCOUNT;TOTAL");
-            check.items.stream()
-                    .map(this::convertToCsvString)
-                    .forEach(pw::println);
-            pw.println();
-
-            if (check.discountCardNumber != null) {
-                pw.println("DISCOUNT CARD;DISCOUNT PERCENTAGE");
-                pw.println(check.discountCardNumber + ";" + check.discountCardAmountPercentage + '%');
-                pw.println();
-            }
-
-            pw.println("TOTAL PRICE;TOTAL DISCOUNT;TOTAL WITH DISCOUNT");
-            pw.println(currencyFormat(check.totalPrice) + ";" + currencyFormat(check.totalDiscount) + ";" +
-                    currencyFormat(check.totalWithDiscount));
+            pw.println(printString(check));
         } catch (FileNotFoundException e) {
             throw new InternalServerException();
         }
+    }
+
+    @Override
+    public String printString(CheckDto check) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Date;Time\n");
+        stringBuilder.append(dateFormat(check.date) + ";" + timeFormat(check.time));
+
+        stringBuilder.append("\n\nQTY;DESCRIPTION;PRICE;DISCOUNT;TOTAL\n");
+        check.items.stream()
+                .map(this::convertToCsvString)
+                .forEach(s -> stringBuilder.append(s).append("\n"));
+        stringBuilder.append("\n");
+
+        if (check.discountCardNumber != null) {
+            stringBuilder.append("DISCOUNT CARD;DISCOUNT PERCENTAGE\n");
+            stringBuilder.append(check.discountCardNumber + ";" + check.discountCardAmountPercentage + "%\n\n");
+        }
+
+        stringBuilder.append("TOTAL PRICE;TOTAL DISCOUNT;TOTAL WITH DISCOUNT\n");
+        stringBuilder.append(currencyFormat(check.totalPrice) + ";" + currencyFormat(check.totalDiscount) + ";" +
+                currencyFormat(check.totalWithDiscount));
+
+        return stringBuilder.toString();
     }
 
     private String convertToCsvString(PurchasedItem purchasedItem) {

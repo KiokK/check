@@ -21,4 +21,9 @@ public class CsvErrorPrinter implements Printer<String> {
             throw new InternalServerException();
         }
     }
+
+    @Override
+    public String printString(String errorMessage) {
+        return DEFAULT_COLUMN + "\n" + errorMessage;
+    }
 }

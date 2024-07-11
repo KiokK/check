@@ -11,24 +11,32 @@ public class ConsoleCheckPrinter implements Printer<CheckDto> {
 
     @Override
     public void print(CheckDto data, String filePath) {
-        System.out.println("Result check:\n" +
+        System.out.println(printString(data));
+    }
+
+    @Override
+    public String printString(CheckDto data) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Result check:\n" +
                 "Date: " + dateFormat(data.date) +
                 ", Time: " + timeFormat(data.time) +
                 ",\n");
-        System.out.println("QTY | Description || PRICE | Discount | TOTAL");
+        sb.append("QTY | Description || PRICE | Discount | TOTAL\n");
 
         data.items.forEach(
-                item -> System.out.println(item.qty + "\t|" + item.description + "\t|| " + currencyFormat(item.price) + "\t" +
-                        currencyFormat(item.discount) + "\t" + currencyFormat(item.total)));
+                item -> sb.append(item.qty + "\t|" + item.description + "\t|| " + currencyFormat(item.price) + "\t" +
+                        currencyFormat(item.discount) + "\t" + currencyFormat(item.total) + "\n"));
 
         if (data.discountCardNumber != null) {
-            System.out.println("\nDISCOUNT CARD=" + data.discountCardNumber +
-                    ", DISCOUNT=" + data.discountCardAmountPercentage + "%");
+            sb.append("\nDISCOUNT CARD=" + data.discountCardNumber +
+                    ", DISCOUNT=" + data.discountCardAmountPercentage + "%\n");
         }
 
-        System.out.println(
+        sb.append(
                 "\nTotal price=" + currencyFormat(data.totalPrice) +
                         ", Total discount=" + currencyFormat(data.totalDiscount) +
-                        ", Total with discount=" + currencyFormat(data.totalWithDiscount));
+                        ", Total with discount=" + currencyFormat(data.totalWithDiscount) + "\n");
+
+        return sb.toString();
     }
 }

@@ -6,10 +6,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DataSource {
-    public static String DATASOURCE_URL = null;
-    public static String DATASOURCE_USERNAME = null;
-    public static String DATASOURCE_PASSWORD = null;
-    public static String driver = "org.postgresql.Driver";
+    public static final String DATASOURCE_URL;
+    public static final String DATASOURCE_USERNAME;
+    public static final String DATASOURCE_PASSWORD;
+    public static final String driver = "org.postgresql.Driver";
+
+    static {
+        DATASOURCE_URL = System.getProperty("datasource.url");
+        DATASOURCE_USERNAME = System.getProperty("datasource.username");
+        DATASOURCE_PASSWORD = System.getProperty("datasource.password");
+    }
 
     public static Connection getConnection() {
         try {
