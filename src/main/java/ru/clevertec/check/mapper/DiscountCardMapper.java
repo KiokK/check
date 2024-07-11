@@ -1,5 +1,6 @@
 package ru.clevertec.check.mapper;
 
+import ru.clevertec.check.dto.request.DiscountCardModifDto;
 import ru.clevertec.check.dto.response.DiscountCardDto;
 import ru.clevertec.check.model.DiscountCard;
 
@@ -12,5 +13,14 @@ public class DiscountCardMapper {
         discountCardDto.number = discountCard.getNumber();
 
         return discountCardDto;
+    }
+
+    public DiscountCard toDiscountCard(long id, DiscountCardModifDto dto) {
+        DiscountCard discountCard = new DiscountCard();
+        discountCard.setId(id);
+        discountCard.setAmount(dto.discountAmount());
+        discountCard.setNumber(dto.discountCard());
+
+        return discountCard;
     }
 }
