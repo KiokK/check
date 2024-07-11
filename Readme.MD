@@ -7,7 +7,7 @@
 - mockito
 - Tomcat 10
 
-### Examples
+### Endpoints
  ### Check
 ![img.png](img.png)
 - http://localhost:8080/check/

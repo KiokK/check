@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import ru.clevertec.check.dto.request.DiscountCardModifDto;
 import ru.clevertec.check.exception.EntityNotFoundException;
 import ru.clevertec.check.exception.InternalServerException;
+import ru.clevertec.check.repository.DiscountCardRepository;
 import ru.clevertec.check.service.DiscountCardService;
 import ru.clevertec.check.service.impl.DiscountCardServiceImpl;
 
@@ -20,7 +21,7 @@ public class DiscountCardController extends HttpServlet {
 
     private static final String ID = "id";
 
-    private DiscountCardService discountCardService = new DiscountCardServiceImpl();
+    private DiscountCardService discountCardService = new DiscountCardServiceImpl(new DiscountCardRepository());
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

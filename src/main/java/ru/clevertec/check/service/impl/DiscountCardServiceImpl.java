@@ -10,8 +10,12 @@ import ru.clevertec.check.service.DiscountCardService;
 
 public class DiscountCardServiceImpl implements DiscountCardService {
 
-    private final DiscountCardRepository discountCardRepository = new DiscountCardRepository();
+    private final DiscountCardRepository discountCardRepository;
     private final DiscountCardMapper discountCardMapper = new DiscountCardMapper();
+
+    public DiscountCardServiceImpl(DiscountCardRepository discountCardRepository) {
+        this.discountCardRepository = discountCardRepository;
+    }
 
     @Override
     public DiscountCardDto findById(Long id) throws EntityNotFoundException {

@@ -19,12 +19,14 @@ import java.util.stream.Collectors;
 @WebServlet("/products")
 public class ProductController extends HttpServlet {
 
+    private static final String ID = "id";
+
     private ProductService productService = new ProductServiceImpl(new ProductRepository());
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            long id = Long.parseLong(request.getParameter("id"));
+            long id = Long.parseLong(request.getParameter(ID));
             response.setStatus(200);
             response.setContentType("application/json");
             response.getWriter().print(new Gson().toJson(productService.findById(id)));
@@ -41,7 +43,7 @@ public class ProductController extends HttpServlet {
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            long id = Long.parseLong(request.getParameter("id"));
+            long id = Long.parseLong(request.getParameter(ID));
             String args = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
             ProductModifDto dto = new Gson().fromJson(args, ProductModifDto.class);
             response.setStatus(201);
@@ -74,7 +76,7 @@ public class ProductController extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            long id = Long.parseLong(request.getParameter("id"));
+            long id = Long.parseLong(request.getParameter(ID));
             if (productService.deleteById(id)) {
                 response.setStatus(204);
             } else {
