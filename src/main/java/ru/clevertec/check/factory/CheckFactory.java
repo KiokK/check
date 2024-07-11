@@ -1,5 +1,6 @@
 package ru.clevertec.check.factory;
 
+import ru.clevertec.check.dto.request.ProductModifDto;
 import ru.clevertec.check.dto.request.PurchaseDto;
 import ru.clevertec.check.dto.response.CheckDto;
 import ru.clevertec.check.dto.response.DiscountCardDto;
@@ -16,6 +17,7 @@ import ru.clevertec.check.service.impl.ProductServiceImpl;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashMap;
 import java.util.Map;
 
 public class CheckFactory {
@@ -43,6 +45,7 @@ public class CheckFactory {
             throw new BadRequestException();
         }
 
+        Map<Long, ProductModifDto> updated = new HashMap<>();
         for (Map.Entry<Long, Integer> productInCart : purchaseDto.products.entrySet()) {
             ProductDto findProduct = productService.findById(productInCart.getKey());
             if (findProduct.quantityInStock() < productInCart.getValue()) {
@@ -66,6 +69,8 @@ public class CheckFactory {
             resultCheck.items.add(item);
             resultCheck.totalPrice = resultCheck.totalPrice.add(item.total);
             resultCheck.totalDiscount = resultCheck.totalDiscount.add(item.discount);
+            updated.put(productInCart.getKey(), new ProductModifDto(findProduct.description(), findProduct.price(),
+                    findProduct.quantityInStock() - productInCart.getValue(), findProduct.wholesaleProduct()));
         }
         resultCheck.totalWithDiscount = resultCheck.totalPrice.subtract(resultCheck.totalDiscount);
         resultCheck.date = LocalDate.now();
@@ -74,7 +79,11 @@ public class CheckFactory {
         if (resultCheck.totalPrice.compareTo(purchaseDto.balanceDebitCard) > 0) {
             throw new NotEnoughMoneyException();
         }
+        updateData(updated);
 
         return resultCheck;
+    }
+    private void updateData(Map<Long, ProductModifDto> productModifDtos) {
+        productModifDtos.forEach((key, value) -> productService.update(key, value));
     }
 }
